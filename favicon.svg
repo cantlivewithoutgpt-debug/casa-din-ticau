@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- House shape -->
+  <path d="M32 6L4 30h8v24h16V38h8v16h16V30h8L32 6z" fill="#C4622D"/>
+  <!-- Window / light glow -->
+  <rect x="24" y="22" width="8" height="8" rx="1" fill="#D4A87A"/>
+  <rect x="36" y="22" width="8" height="8" rx="1" fill="#D4A87A"/>
+  <!-- Warm glow from door -->
+  <rect x="28" y="38" width="8" height="16" rx="1" fill="#FAF7F2"/>
+  <!-- Chimney -->
+  <rect x="42" y="12" width="6" height="14" rx="1" fill="#3D2B1F"/>
+  <!-- Small star/light accent -->
+  <circle cx="28" cy="26" r="1.5" fill="#FAF7F2" opacity="0.7"/>
+  <circle cx="40" cy="26" r="1.5" fill="#FAF7F2" opacity="0.7"/>
+</svg>
