@@ -1,0 +1,1399 @@
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes scrollLine {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  50.1% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* ===== REVEAL ON SCROLL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ===== NAV ===== */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 247, 242, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid #E5DDD5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1rem, 5vw, 3rem);
+  height: 68px;
+  transition: box-shadow 0.3s;
+}
+
+.site-nav.scrolled {
+  box-shadow: 0 2px 20px rgba(61, 43, 31, 0.08);
+}
+
+.nav-logo {
+  font-size: 22px;
+  font-weight: 600;
+  color: #3D2B1F;
+  font-style: italic;
+  letter-spacing: -0.3px;
+  font-family: 'Playfair Display', serif;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-link {
+  font-size: 13px;
+  color: #8A7A6E;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: color 0.25s;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: #C4622D;
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link:hover {
+  color: #3D2B1F;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.lang-btn {
+  font-size: 11px;
+  border: 1.5px solid #C4622D;
+  color: #C4622D;
+  background: none;
+  padding: 5px 16px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  transition: background 0.25s, color 0.25s;
+}
+
+.lang-btn:hover {
+  background: #C4622D;
+  color: #fff;
+}
+
+/* Mobile hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #3D2B1F;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(80px, 12vw, 140px) clamp(1.5rem, 8vw, 4rem);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 8s ease-out;
+}
+
+.hero:hover .hero-bg {
+  transform: scale(1.03);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(30, 16, 8, 0.85) 0%,
+    rgba(61, 43, 31, 0.72) 45%,
+    rgba(80, 50, 30, 0.55) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  width: 100%;
+  color: #FAF7F2;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.hero-tag {
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #D4A87A;
+  margin-bottom: 28px;
+  font-weight: 500;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-heading {
+  font-size: clamp(36px, 5vw, 68px);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 30px;
+  animation: fadeInUp 0.8s ease-out 0.15s both;
+}
+
+.hero-sub {
+  font-size: 17px;
+  color: rgba(250, 247, 242, 0.72);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+  margin-bottom: 52px;
+  animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeInUp 0.8s ease-out 0.45s both;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: #C4622D;
+  color: #fff;
+  padding: 16px 44px;
+  border-radius: 8px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  border: none;
+  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+  font-family: 'Jost', sans-serif;
+}
+
+.btn-primary:hover {
+  background: #A84E22;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(196, 98, 45, 0.35);
+}
+
+.btn-outline {
+  display: inline-block;
+  border: 1.5px solid rgba(250, 247, 242, 0.3);
+  color: #FAF7F2;
+  padding: 16px 38px;
+  border-radius: 8px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+  background: none;
+  transition: border-color 0.25s, background 0.25s;
+  font-family: 'Jost', sans-serif;
+}
+
+.btn-outline:hover {
+  border-color: rgba(250, 247, 242, 0.65);
+  background: rgba(250, 247, 242, 0.06);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(250, 247, 242, 0.35);
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 44px;
+  background: rgba(250, 247, 242, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #D4A87A;
+  animation: scrollLine 2s ease-in-out infinite;
+}
+
+/* ===== FEATURES ===== */
+.features-strip {
+  background: #fff;
+  border-bottom: 1px solid #E5DDD5;
+}
+
+.features-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.feature-item {
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  transition: background 0.3s;
+}
+
+.feature-item:not(:last-child) {
+  border-right: 1px solid #E5DDD5;
+}
+
+.feature-item:hover {
+  background: rgba(196, 98, 45, 0.03);
+}
+
+.feature-icon {
+  font-size: 30px;
+  line-height: 1;
+}
+
+.feature-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #3D2B1F;
+  margin-top: 4px;
+}
+
+.feature-desc {
+  font-size: 13px;
+  color: #8A7A6E;
+  line-height: 1.6;
+}
+
+/* ===== SECTION HEADER ===== */
+.section-header {
+  text-align: center;
+  padding: 80px 1rem 20px;
+  background: #FAF7F2;
+}
+
+.section-label {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #C4622D;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.section-title {
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 400;
+  color: #3D2B1F;
+}
+
+.section-sub {
+  font-size: 15px;
+  color: #8A7A6E;
+  margin-top: 12px;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.section-divider-line {
+  width: 48px;
+  height: 1px;
+  background: #E5DDD5;
+}
+
+.section-divider-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #C4622D;
+}
+
+/* ===== APARTMENTS GRID ===== */
+.apartments-section {
+  padding: 48px clamp(1rem, 5vw, 3rem) 110px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.apartments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* ===== APARTMENT CARD ===== */
+.apt-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.apt-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #E5DDD5;
+  transition: border-color 0.3s, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.apt-card:hover {
+  border-color: rgba(196, 98, 45, 0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 56px rgba(61, 43, 31, 0.14);
+}
+
+.apt-card-img-wrap {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+}
+
+.apt-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.apt-card:hover .apt-card-img {
+  transform: scale(1.07);
+}
+
+.apt-card-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+  pointer-events: none;
+}
+
+.apt-card-price {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(61, 43, 31, 0.9);
+  backdrop-filter: blur(8px);
+  color: #D4A87A;
+  font-size: 14px;
+  font-family: 'Playfair Display', serif;
+  padding: 6px 14px;
+  border-radius: 8px;
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+}
+
+.apt-card-price strong {
+  font-size: 18px;
+  margin-left: 3px;
+}
+
+.apt-card-price .night {
+  font-size: 11px;
+  color: #9A8070;
+  margin-left: 1px;
+}
+
+.apt-card-popular {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #C4622D;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(196, 98, 45, 0.3);
+}
+
+.apt-card-info {
+  position: absolute;
+  bottom: 14px;
+  left: 16px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 12px;
+  letter-spacing: 0.3px;
+}
+
+.apt-card-body {
+  padding: 20px 22px 22px;
+}
+
+.apt-card-name {
+  font-size: 19px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #3D2B1F;
+}
+
+.apt-card-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.tag {
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  background: #F2EDE6;
+  border: 1px solid #E5DDD5;
+  border-radius: 20px;
+  padding: 4px 12px;
+  color: #8A7A6E;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.apt-card:hover .tag {
+  background: #EDE6DC;
+}
+
+.apt-card-btn {
+  width: 100%;
+  padding: 13px;
+  background: #C4622D;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  transition: background 0.25s, box-shadow 0.25s;
+}
+
+.apt-card:hover .apt-card-btn {
+  background: #3D2B1F;
+  box-shadow: 0 4px 16px rgba(61, 43, 31, 0.2);
+}
+
+/* ===== CONTACT / FOOTER ===== */
+.contact-section {
+  background: #3D2B1F;
+  color: #FAF7F2;
+  padding: 90px clamp(1.5rem, 5vw, 4rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-circle-1 {
+  position: absolute;
+  right: -80px;
+  top: -80px;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 168, 122, 0.1);
+}
+
+.contact-circle-2 {
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 168, 122, 0.06);
+}
+
+.contact-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-label {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #D4A87A;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.contact-heading {
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 400;
+  margin-bottom: 14px;
+}
+
+.contact-sub {
+  color: rgba(250, 247, 242, 0.45);
+  font-size: 15px;
+  margin-bottom: 52px;
+}
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 30px 20px;
+  border: 1px solid rgba(229, 221, 213, 0.1);
+  border-radius: 14px;
+  color: rgba(250, 247, 242, 0.65);
+  font-size: 14px;
+  line-height: 1.5;
+  transition: border-color 0.3s, background 0.3s, transform 0.3s;
+}
+
+.contact-card:hover {
+  border-color: rgba(212, 168, 122, 0.35);
+  background: rgba(212, 168, 122, 0.06);
+  transform: translateY(-3px);
+}
+
+.contact-card-icon {
+  font-size: 28px;
+}
+
+.contact-divider {
+  width: 40px;
+  height: 1px;
+  background: rgba(212, 168, 122, 0.25);
+  margin: 0 auto 32px;
+}
+
+.contact-copy {
+  font-size: 12px;
+  color: rgba(250, 247, 242, 0.22);
+  letter-spacing: 0.3px;
+}
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 12, 8, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: fadeIn 0.25s ease-out;
+}
+
+.modal-box {
+  background: #FAF7F2;
+  border-radius: 18px;
+  padding: 40px 36px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 92vh;
+  overflow-y: auto;
+  box-shadow: 0 36px 90px rgba(0, 0, 0, 0.4);
+  animation: scaleIn 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.modal-header {
+  margin-bottom: 30px;
+}
+
+.modal-title {
+  font-size: 26px;
+  font-weight: 600;
+  color: #3D2B1F;
+}
+
+.modal-apt-name {
+  font-size: 14px;
+  color: #8A7A6E;
+  margin-top: 6px;
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 18px;
+}
+
+.modal-field {
+  margin-bottom: 18px;
+}
+
+.modal-field.full {
+  grid-column: 1 / -1;
+}
+
+.modal-label {
+  font-size: 12px;
+  color: #8A7A6E;
+  display: block;
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+  font-weight: 500;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #E5DDD5;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+  color: #1C1C1C;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.modal-textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #E5DDD5;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+  color: #1C1C1C;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  resize: vertical;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.modal-cancel {
+  flex: 1;
+  padding: 14px;
+  border: 1px solid #E5DDD5;
+  background: none;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #8A7A6E;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.modal-cancel:hover {
+  background: #F2EDE6;
+  border-color: #D4CEC6;
+}
+
+.modal-send {
+  flex: 2;
+  padding: 14px;
+  background: #C4622D;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  font-weight: 500;
+  transition: background 0.25s, box-shadow 0.25s;
+}
+
+.modal-send:hover {
+  background: #A84E22;
+  box-shadow: 0 4px 16px rgba(196, 98, 45, 0.3);
+}
+
+.modal-success {
+  text-align: center;
+  padding: 56px 0;
+  animation: scaleIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.modal-success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #EDF7ED;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #2E7D32;
+}
+
+.modal-success h3 {
+  font-size: 26px;
+  margin-bottom: 12px;
+  color: #3D2B1F;
+}
+
+.modal-success p {
+  color: #8A7A6E;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ===== MOBILE MENU OVERLAY ===== */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  background: rgba(250, 247, 242, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid #E5DDD5;
+  padding: 24px 28px;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 99;
+  animation: slideDown 0.3s ease-out;
+  box-shadow: 0 10px 40px rgba(61, 43, 31, 0.1);
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+.mobile-menu a {
+  font-size: 16px;
+  color: #3D2B1F;
+  font-weight: 500;
+  padding: 8px 0;
+  border-bottom: 1px solid #E5DDD5;
+}
+
+.mobile-menu a:last-of-type {
+  border-bottom: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hero {
+    min-height: 80vh;
+    padding: clamp(60px, 10vw, 100px) clamp(1.5rem, 6vw, 3rem);
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .feature-item:nth-child(2) {
+    border-right: none;
+  }
+
+  .feature-item:nth-child(1),
+  .feature-item:nth-child(2) {
+    border-bottom: 1px solid #E5DDD5;
+  }
+
+  .apartments-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-nav {
+    height: 60px;
+  }
+
+  .mobile-menu {
+    top: 60px;
+  }
+
+  .hero {
+    min-height: 75vh;
+    padding: 60px 1.25rem;
+  }
+
+  .hero-heading {
+    font-size: clamp(36px, 10vw, 52px);
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+
+  .btn-primary, .btn-outline {
+    padding: 14px 28px;
+    font-size: 13px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-item {
+    border-right: none !important;
+    border-bottom: 1px solid #E5DDD5;
+  }
+
+  .feature-item:last-child {
+    border-bottom: none;
+  }
+
+  .apartments-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    padding: 60px 1rem 16px;
+  }
+
+  .contact-section {
+    padding: 60px 1.25rem;
+  }
+
+  .contact-cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .modal-box {
+    padding: 28px 22px;
+    border-radius: 14px;
+  }
+
+  .modal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-field {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ===== APARTMENT PAGE ===== */
+.apt-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 5vw, 3rem);
+}
+
+.apt-page-not-found {
+  text-align: center;
+  padding: 120px 2rem;
+}
+
+.apt-page-not-found h2 {
+  font-size: 28px;
+  color: #3D2B1F;
+  margin-bottom: 24px;
+}
+
+.apt-page-back-wrap {
+  padding: 28px 0 20px;
+}
+
+.apt-page-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #8A7A6E;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.apt-page-back:hover {
+  color: #C4622D;
+}
+
+.apt-page-back-arrow {
+  font-size: 18px;
+  transition: transform 0.2s;
+}
+
+.apt-page-back:hover .apt-page-back-arrow {
+  transform: translateX(-3px);
+}
+
+/* Gallery */
+.apt-gallery {
+  margin-bottom: 48px;
+}
+
+.apt-gallery-main {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.apt-gallery-main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.35s ease;
+}
+
+.apt-gallery-popular {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background: #C4622D;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(196, 98, 45, 0.3);
+}
+
+.apt-gallery-thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.apt-gallery-thumb {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  padding: 0;
+  background: none;
+  transition: border-color 0.25s, opacity 0.25s;
+}
+
+.apt-gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.apt-gallery-thumb:not(.active) {
+  opacity: 0.6;
+}
+
+.apt-gallery-thumb:hover {
+  opacity: 1;
+}
+
+.apt-gallery-thumb.active {
+  border-color: #C4622D;
+  opacity: 1;
+}
+
+/* Detail grid */
+.apt-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 48px;
+  padding-bottom: 96px;
+}
+
+/* Left info */
+.apt-detail-title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 600;
+  color: #3D2B1F;
+  margin-bottom: 28px;
+}
+
+.apt-detail-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.apt-detail-stat {
+  background: #fff;
+  border: 1px solid #E5DDD5;
+  border-radius: 12px;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.apt-detail-stat-label {
+  font-size: 12px;
+  color: #8A7A6E;
+  letter-spacing: 0.3px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.apt-detail-stat-value {
+  font-size: 20px;
+  font-weight: 600;
+  color: #3D2B1F;
+  font-family: 'Playfair Display', serif;
+}
+
+.apt-detail-stat-price {
+  color: #C4622D;
+}
+
+.apt-detail-stat-price small {
+  font-size: 12px;
+  font-weight: 400;
+  color: #8A7A6E;
+  margin-left: 2px;
+}
+
+.apt-detail-section {
+  margin-bottom: 36px;
+}
+
+.apt-detail-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #3D2B1F;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #E5DDD5;
+}
+
+.apt-detail-desc {
+  font-size: 15px;
+  color: #5A4E44;
+  line-height: 1.8;
+}
+
+.apt-detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.apt-detail-tag {
+  background: #fff;
+  border: 1px solid #E5DDD5;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #3D2B1F;
+  font-weight: 500;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.apt-detail-tag:hover {
+  background: #F2EDE6;
+  border-color: #D4CEC6;
+}
+
+/* Booking card (right side) */
+.apt-detail-booking {
+  position: relative;
+}
+
+.apt-booking-card {
+  position: sticky;
+  top: 88px;
+  background: #fff;
+  border: 1px solid #E5DDD5;
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 4px 24px rgba(61, 43, 31, 0.08);
+}
+
+.apt-booking-header {
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #E5DDD5;
+}
+
+.apt-booking-price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.apt-booking-price-label {
+  font-size: 13px;
+  color: #8A7A6E;
+}
+
+.apt-booking-price-value {
+  font-size: 32px;
+  font-weight: 600;
+  color: #C4622D;
+  font-family: 'Playfair Display', serif;
+}
+
+.apt-booking-price-night {
+  font-size: 14px;
+  color: #8A7A6E;
+}
+
+.apt-booking-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 12px;
+}
+
+.apt-booking-field {
+  margin-bottom: 14px;
+}
+
+.apt-booking-field.full {
+  grid-column: 1 / -1;
+}
+
+.apt-booking-field.half {
+  grid-column: span 1;
+}
+
+.apt-booking-field label {
+  display: block;
+  font-size: 12px;
+  color: #8A7A6E;
+  margin-bottom: 5px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.apt-booking-field input,
+.apt-booking-field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #E5DDD5;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #FAF7F2;
+  color: #1C1C1C;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.apt-booking-field textarea {
+  resize: vertical;
+}
+
+.apt-booking-btn {
+  width: 100%;
+  padding: 15px;
+  background: #C4622D;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  margin-top: 8px;
+  transition: background 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+
+.apt-booking-btn:hover {
+  background: #A84E22;
+  box-shadow: 0 6px 20px rgba(196, 98, 45, 0.3);
+  transform: translateY(-1px);
+}
+
+.apt-booking-success {
+  text-align: center;
+  padding: 32px 0;
+  animation: scaleIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.apt-booking-success-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #EDF7ED;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #2E7D32;
+}
+
+.apt-booking-success h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: #3D2B1F;
+}
+
+.apt-booking-success p {
+  color: #8A7A6E;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Apartment page responsive */
+@media (max-width: 900px) {
+  .apt-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .apt-booking-card {
+    position: static;
+  }
+
+  .apt-detail-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .apt-gallery-main {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 600px) {
+  .apt-page {
+    padding: 0 1rem;
+  }
+
+  .apt-gallery-main {
+    aspect-ratio: 4 / 3;
+    border-radius: 12px;
+  }
+
+  .apt-gallery-thumbs {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+
+  .apt-gallery-thumb {
+    border-radius: 6px;
+  }
+
+  .apt-detail-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .apt-booking-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .apt-booking-field.half {
+    grid-column: 1 / -1;
+  }
+
+  .apt-page-back-wrap {
+    padding: 20px 0 14px;
+  }
+}
